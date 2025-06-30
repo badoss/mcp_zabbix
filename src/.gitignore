@@ -1,0 +1,22 @@
+# uv-specific
+.venv/
+uv.lock # Optional: uncomment to ignore uv's lockfile
+
+# Python-specific
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+dist/
+build/
+*.egg-info/
+
+# Editor/IDE files
+.idea/
+.vscode/
+*.sublime-project
+
+.ropeproject
+claude_desktop_config.json
+.python-version
+uv.lock
