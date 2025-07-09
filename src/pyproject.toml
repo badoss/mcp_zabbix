@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "mcp zabbix"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["fastmcp>=2.9.1", "httpx>=0.28.1", "mcp[cli]>=1.10.1"]
+dependencies = [
+    "fastmcp>=2.9.1",
+    "httpx>=0.28.1",
+    "load-dotenv>=0.1.0",
+    "mcp[cli]>=1.10.1",
+]
