@@ -2,3 +2,5 @@ fastmcp
 httpx
 python-dotenv
 mcp[cli]
+matplotlib
+numpy

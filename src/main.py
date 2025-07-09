@@ -1,9 +1,11 @@
 import os
 import httpx
+import json
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 from services.mcp_logic import _api_call
 from utils.mail import _send_email
+from utils.graph import _construct_graph
 
 # import func _api_call form src/services/mcp_logic.py
 mcp = FastMCP("MCP Zabbix", "1.0.0")
@@ -123,6 +125,98 @@ def send_email(to_email: str, subject: str, body: str) -> None:
     """Send an email using Gmail SMTP server."""
     _send_email(to_email, subject, body)
     return {"status": "Email sent successfully."}
+
+@mcp.tool(title="Construct Graph")
+def construct_graph(item_name: str) -> dict:
+    """Construct a graph from the data"""
+
+    data = {
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "itemid": "50134",
+            "clock": "1750842000",
+            "num": "26",
+            "value_min": "1.661105",
+            "value_avg": "2.033985423076923",
+            "value_max": "2.907631"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750845600",
+            "num": "60",
+            "value_min": "1.449433",
+            "value_avg": "2.0194116833333338",
+            "value_max": "4.784133"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750849200",
+            "num": "60",
+            "value_min": "1.497801",
+            "value_avg": "2.066933033333333",
+            "value_max": "10.613991"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750852800",
+            "num": "60",
+            "value_min": "1.429875",
+            "value_avg": "1.7798675000000002",
+            "value_max": "2.159854"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750856400",
+            "num": "60",
+            "value_min": "1.375525",
+            "value_avg": "1.7987132333333333",
+            "value_max": "2.282539"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750860000",
+            "num": "60",
+            "value_min": "1.48093",
+            "value_avg": "1.94930165",
+            "value_max": "8.280128"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750863600",
+            "num": "60",
+            "value_min": "1.417314",
+            "value_avg": "1.8020279166666668",
+            "value_max": "2.398512"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750867200",
+            "num": "60",
+            "value_min": "1.514085",
+            "value_avg": "1.8175866666666671",
+            "value_max": "2.466219"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750870800",
+            "num": "60",
+            "value_min": "1.476906",
+            "value_avg": "1.7907370333333332",
+            "value_max": "2.609873"
+        },
+        {
+            "itemid": "50134",
+            "clock": "1750874400",
+            "num": "60",
+            "value_min": "1.455132",
+            "value_avg": "1.8111600666666674",
+            "value_max": "2.890896"
+        }
+    ],
+    "id": 1
+}
+    return _construct_graph(data, item_name)
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
