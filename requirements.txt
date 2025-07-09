@@ -1,1 +1,4 @@
-#
+fastmcp
+httpx
+python-dotenv
+mcp[cli]
